@@ -1,8 +1,11 @@
 MODEL_CONFIG=$1
 SLIM_CONFIG=$2
 
-rm slim_scripts
-touch slim_scripts
+if [ -e "slim_scripts" ]; then
+    rm slim_scripts
+else
+    touch slim_scripts
+fi
 
 echo python tools/train.py -c $MODEL_CONFIG --slim_config $SLIM_CONFIG >> slim_scripts
 echo >> slim_scripts
