@@ -1,0 +1,15 @@
+# trainning
+export CUDA_VISIBLE_DEVICES=0
+
+python tools/train.py -c config.yml -r output/weights
+
+--eval to eval
+
+# eval
+python tools/eval.py -c config.yml -o output/weights
+
+# predict / infer
+pythn tools/infer.py -c config.yml --infer_img=demo/x -o output/weights
+
+# export
+python tools/export_model.py -c config.yml --output_dir=./inference_model -o output/weights
