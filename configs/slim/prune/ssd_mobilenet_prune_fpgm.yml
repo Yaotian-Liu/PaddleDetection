@@ -1,0 +1,8 @@
+pretrain_weights: https://paddlemodels.bj.bcebos.com/object_detection/dygraph/ssd_mobilenet_v1_300_120e_voc.pdparams
+slim: Pruner
+
+Pruner:
+  criterion: fpgm
+  pruned_params: ["conv2d_22.w_0", "conv2d_20.w_0", "conv2d_24"]
+  pruned_ratios: [0.4, 0.4, 0,4]
+  print_params: True
