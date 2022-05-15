@@ -1,7 +1,7 @@
 epoch: 120
 
 LearningRate:
-  base_lr: 0.005
+  base_lr: 0.01
   schedulers:
   - !PiecewiseDecay
     milestones: [40, 60, 80, 100]

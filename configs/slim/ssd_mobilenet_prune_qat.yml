@@ -7,9 +7,9 @@ pruner: Pruner
 
 Pruner:
   criterion: fpgm
-  pruned_params: ["conv2d_22.w_0", "conv2d_20.w_0", "conv2d_24"]
-  pruned_ratios: [0.4, 0.4, 0,4]
-  print_params: True
+  pruned_params: ["conv2d_10.w_0" ,"conv2d_12.w_0", "conv2d_14.w_0","conv2d_16.w_0","conv2d_18.w_0","conv2d_20.w_0", "conv2d_22.w_0"]
+  pruned_ratios: [0.4, 0.2, 0.2, 0.4, 0.6, 0.2, 0.4]
+  print_params: False
 
 
 qat: QAT
@@ -17,6 +17,7 @@ qat: QAT
 QAT:
   quant_config: {
     'weight_quantize_type': 'channel_wise_abs_max', 'activation_quantize_type': 'moving_average_abs_max',
-    'weight_bits': 8, 'activation_bits': 8, 'dtype': 'int8', 'window_size': 10000, 'moving_rate': 0.9,
+    'weight_bits': 8, 'activation_bits': 8, 'dtype': 'int8', 'window_size': 10000, 'moving_rate': 0.99,
     'quantizable_layer_type': ['Conv2D', 'Linear']}
-  print_model: True
+  print_model: False
+

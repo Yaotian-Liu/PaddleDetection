@@ -79,3 +79,5 @@ dataset/wider_face/WIDER_val
 dataset/wider_face/wider_face_split
 
 slim_scripts
+sensitivity.csv
+nohup.out

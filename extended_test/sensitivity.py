@@ -31,12 +31,12 @@ cfg = {
 def generate_yaml(pruned_params, pruned_ratios):
     cfg["Pruner"]["pruned_params"] = [pruned_params]
     cfg["Pruner"]["pruned_ratios"] = [pruned_ratios]
-    with open("./extended/prune_qat_test.yml", "w") as f:
+    with open("./extended_test/prune_qat_test.yml", "w") as f:
         yaml.dump(cfg, f)
 
 
 def train(config, slim_config):
-    os.system("rm -rf " + "output/" + slim_config[9:-4])
+    os.system("rm -rf " + "output/" + slim_config[14:-4])
     train_cmd = (
         "python tools/train.py"
         + " -c "
@@ -67,7 +67,7 @@ def evaluate(config, slim_config):
         + slim_config
         + " -o "
         + "weights=output/"
-        + slim_config[9:-4]
+        + slim_config[14:-4]
         + "/best_model"
     )
     print("evaluating")
@@ -78,8 +78,8 @@ def evaluate(config, slim_config):
 
 if __name__ == "__main__":
 
-    config = "configs/ssd/ssd_mobilenet_v1_300_40e_roadsign_voc.yml"
-    slim_config = "extended/prune_qat_test.yml"
+    config = "configs/ssd/ssd_mobilenet_v1_300_70e_roadsign_voc.yml"
+    slim_config = "extended_test/prune_qat_test.yml"
 
     # baseline
     generate_yaml(None, 0)
@@ -93,7 +93,6 @@ if __name__ == "__main__":
     sensitivity_list = []
 
     pruned_params = [
-        "conv2d_8.w_0",
         "conv2d_10.w_0",
         "conv2d_12.w_0",
         "conv2d_14.w_0",
@@ -102,7 +101,7 @@ if __name__ == "__main__":
         "conv2d_20.w_0",
         "conv2d_22.w_0",
     ]
-    pruned_ratios = [0.1, 0.3, 0.5, 0.7]
+    pruned_ratios = [0.1, 0.2, 0.4, 0.6]
     for param in pruned_params:
         for ratio in pruned_ratios:
             generate_yaml(param, ratio)
@@ -125,4 +124,4 @@ if __name__ == "__main__":
     )
 
     print(result_df)
-    result_df.to_csv("extended/sensitivity.csv")
+    result_df.to_csv("extended_test/sensitivity.csv")
