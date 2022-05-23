@@ -4,7 +4,7 @@ LearningRate:
   base_lr: 0.04
   schedulers:
   - !PiecewiseDecay
-    milestones: [40, 60]
+    milestones: [35, 55]
     gamma: [0.3, 0.1]
     use_warmup: false
 
