@@ -20,4 +20,5 @@ ax.set_xlabel("prune ratio")
 ax.set_ylabel("sensitivity")
 ax.legend()
 
+plt.savefig("sensitivity.png")
 plt.show()

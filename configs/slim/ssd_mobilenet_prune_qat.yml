@@ -8,7 +8,7 @@ pruner: Pruner
 Pruner:
   criterion: fpgm
   pruned_params: ["conv2d_10.w_0" ,"conv2d_12.w_0", "conv2d_14.w_0","conv2d_16.w_0","conv2d_18.w_0","conv2d_20.w_0", "conv2d_22.w_0"]
-  pruned_ratios: [0.4, 0.2, 0.2, 0.4, 0.6, 0.2, 0.4]
+  pruned_ratios: [0.4, 0.2, 0.7, 0.7, 0.4, 0.4, 0.7]
   print_params: False
 
 

@@ -41,7 +41,7 @@ def train(config, slim_config):
         "python tools/train.py"
         + " -c "
         + config
-        + " --eval "
+        # + " --eval "
         + " --slim_config "
         + slim_config
     )
@@ -68,7 +68,7 @@ def evaluate(config, slim_config):
         + " -o "
         + "weights=output/"
         + slim_config[14:-4]
-        + "/best_model"
+        + "/model_final"
     )
     print("evaluating")
     print(eval_cmd)
@@ -101,7 +101,7 @@ if __name__ == "__main__":
         "conv2d_20.w_0",
         "conv2d_22.w_0",
     ]
-    pruned_ratios = [0.1, 0.2, 0.4, 0.6]
+    pruned_ratios = [0.1, 0.2, 0.4, 0.6, 0.7]
     for param in pruned_params:
         for ratio in pruned_ratios:
             generate_yaml(param, ratio)

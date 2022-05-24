@@ -4,7 +4,7 @@ Pruner:
   pruned_params:
   - conv2d_22.w_0
   pruned_ratios:
-  - 0.6
+  - 0.7
 QAT:
   print_model: false
   quant_config:
